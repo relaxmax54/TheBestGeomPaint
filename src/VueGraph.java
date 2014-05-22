@@ -1,10 +1,15 @@
+import java.awt.Cursor;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.Observable;
 import java.util.Observer;
+
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
-
-public class VueGraph extends JPanel implements Observer{
+public class VueGraph extends ControleurGraph implements Observer{
 	Disque modele;
 	
 	public void update(Observable o,Object arg1){
@@ -19,5 +24,4 @@ public class VueGraph extends JPanel implements Observer{
 			g.drawRect(modele.getTaille()-2, modele.getTaille()/2-2, 4,4);//dessine le point du rayon
 			g.drawOval(0, 0, modele.getTaille(), modele.getTaille());
 	}
-
 }
