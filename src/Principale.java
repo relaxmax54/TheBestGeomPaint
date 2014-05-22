@@ -6,26 +6,32 @@ import javax.swing.JFrame;
 
 public class Principale {
 	public static void main(String[] args){
+		
+		//création des modèles
 		Disque d=new Disque();
 		
+		//création des vues
 		VueTexte vt=new VueTexte();
 		VueGraph vg=new VueGraph();
 		
 		d.addObserver(vt);
 		d.addObserver(vg);
 		
+		//création des contrôleurs
+		VueMenu vm=new VueMenu(d);		
 		Controleur c=new Controleur(d);
 		
 		JFrame frame=new JFrame();
 		frame.setLayout(new BorderLayout());
-		c.setPreferredSize(new Dimension(100,50));
-		vg.setPreferredSize(new Dimension(200,200));
+		c.setPreferredSize(new Dimension(700,55));
+		vg.setPreferredSize(new Dimension(700,400));
 		
-		frame.getContentPane().add(vg,BorderLayout.NORTH);
+		frame.getContentPane().add(vm,BorderLayout.NORTH);
+		frame.getContentPane().add(vg,BorderLayout.CENTER);
 		frame.getContentPane().add(c,BorderLayout.SOUTH);
 		
 		frame.pack();
-		frame.setSize(new Dimension(300,300));
+		frame.setSize(new Dimension(700,490));
 		frame.setVisible(true);
 		c.setValue(10);
 	}
