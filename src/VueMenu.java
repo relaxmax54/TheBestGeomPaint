@@ -51,20 +51,25 @@ public class VueMenu extends Dessin implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == bouton[2]) {
+        	modele.unSelect();
         	FormesGeo modele=new Rectangle();
+        	Dessin.setModele(modele);
             System.out.println("Rectangle" );
         } else if (source == bouton[3]) {
-        	Cercle modele=new Cercle();//////////////
-        	((Cercle)modele).setCentre(0,0);
-        	modele.choix=3;
-            System.out.println("Cercle" );
+        	modele.unSelect();
+        	FormesGeo modele=new Cercle();
+        	Dessin.setModele(modele);
+        	((Cercle)modele).setCentre(50,50);
         } else if (source == bouton[4]) {
+        	modele.unSelect();
         	Triangle modele=new Triangle();
+        	Dessin.setModele(modele);
             System.out.println("Triangle" );
         } else if (source == bouton[5]) {
+        	modele.unSelect();
         	Polygone modele=new Polygone();
+        	Dessin.setModele(modele);
             System.out.println("Polygone" );
         }
-    	Dessin.setModele(modele);
 	}
 }

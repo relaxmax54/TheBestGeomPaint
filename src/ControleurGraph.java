@@ -35,18 +35,19 @@ public class ControleurGraph extends Dessin implements MouseListener, MouseMotio
 	public void mouseClicked(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
 	public void mousePressed(MouseEvent e) {
-		System.out.println("event" );
 		if (SwingUtilities.isLeftMouseButton(e)){
-			if(modele.choix==3){
-				if(((Cercle)modele).testCurseurRayon(e.getX(),e.getY()))
-					redimension=true;
-				else
+			if(modele instanceof Cercle){
+				if(modele.isSelected())
+					if(((Cercle)modele).testCurseurRayon(e.getX(),e.getY()))
+						redimension=true;
+				else{
 					((Cercle)modele).setCentre(e.getX(),e.getY());
-					}
-				else if (SwingUtilities.isMiddleMouseButton(e)) {
-					repaint();
 				}
 			}
+			else if (SwingUtilities.isMiddleMouseButton(e)) {
+				repaint();
+			}
+		}
 		lastX=e.getX();
 		lastY=e.getY();
 	}

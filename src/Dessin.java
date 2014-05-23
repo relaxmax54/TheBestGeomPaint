@@ -22,6 +22,5 @@ public class Dessin extends JPanel {
 		c.addObserver(texte);
 		c.addObserver(graph);
 		dessin.add(c);
-		System.out.println("setModele" );
 	}
 }

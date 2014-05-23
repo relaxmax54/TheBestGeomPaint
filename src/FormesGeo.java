@@ -5,25 +5,25 @@ import java.util.Observable;
 public class FormesGeo extends Observable{//MODELE
 	protected final static int carre=4;//largeur des petits carrés de sélection
 	public static int choix=0;
-	private boolean selected;
+	protected boolean selection;
 	private Color couleurRemplissage; //Couleur des bordures
 	private Color couleurContour; //Couleur de remplissage
 	
 	public FormesGeo(){
-		selected = true;
+		selection = true;
 	}
-	public void selected(){
-		selected = true;
+	public void select(){
+		selection = true;
 		setChanged();//une forme géométrique sélectionnée doit être différentiable des autres formes
 		notifyObservers();
 	}
-	public void unSelected(){
-		selected = false;
+	public void unSelect(){
+		selection = false;
 		setChanged();//les formes non sélectionnées doivent être différentiable des autres formes
 		notifyObservers();
 	}
 	public boolean isSelected()	{
-		return selected;
+		return selection;
 	}
 	public Color getCouleurContour()
 	{

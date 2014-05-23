@@ -7,6 +7,7 @@ public class Cercle extends FormesGeo{
 	public Cercle(){
 		taille=10;
 		centre=new Point();
+		selection=true;
 	}
 	public int getX(){
 		return this.centre.x;
@@ -19,7 +20,7 @@ public class Cercle extends FormesGeo{
 	}
 	public void setCentre(int x, int y){
 		this.centre.move(x,y);
-		System.out.println("Merde");
+		System.out.println("CerclesetCentre");
 		setChanged();
 		notifyObservers();
 	}
