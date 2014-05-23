@@ -52,6 +52,7 @@ public class VueMenu extends Dessin implements ActionListener{
         Object source = e.getSource();
         if (source == bouton[2]) {
         	modele.unSelect();
+        	repaint();
         	FormesGeo modele=new Rectangle();
         	Dessin.setModele(modele);
             System.out.println("Rectangle" );
@@ -59,7 +60,6 @@ public class VueMenu extends Dessin implements ActionListener{
         	modele.unSelect();
         	FormesGeo modele=new Cercle();
         	Dessin.setModele(modele);
-        	((Cercle)modele).setCentre(50,50);
         } else if (source == bouton[4]) {
         	modele.unSelect();
         	Triangle modele=new Triangle();

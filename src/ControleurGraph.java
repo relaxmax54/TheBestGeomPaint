@@ -2,19 +2,21 @@ import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-
-import javax.swing.JPanel;
+import java.util.ArrayList;
 import javax.swing.SwingUtilities;
 
 
 public class ControleurGraph extends Dessin implements MouseListener, MouseMotionListener{
+	private final static int tailledepart=50;
 	int lastX,lastY;
 	boolean redimension;
+	protected static ArrayList dessin;
 	
 	public ControleurGraph(){
 		redimension=false;
 		addMouseListener(this);
     	addMouseMotionListener(this);
+    	dessin=new ArrayList();
 	}
 	public void mouseEntered(MouseEvent arg0) {
 		/*System.out.println(menu.getCursor());
@@ -42,6 +44,8 @@ public class ControleurGraph extends Dessin implements MouseListener, MouseMotio
 						redimension=true;
 				else{
 					((Cercle)modele).setCentre(e.getX(),e.getY());
+					((Cercle)modele).setTaille(tailledepart);
+					dessin.add(modele);
 				}
 			}
 			else if (SwingUtilities.isMiddleMouseButton(e)) {
@@ -110,7 +114,8 @@ public class ControleurGraph extends Dessin implements MouseListener, MouseMotio
 			Graphics g=getGraphics();
 			System.out.println(lastX+" "+lastY);
 			if(redimension){
-				((Cercle)modele).setTaille(((Cercle)modele).getTaille()+e.getX()-lastX);
+				if(modele instanceof Cercle)
+					((Cercle)modele).setTaille(((Cercle)modele).getTaille()+e.getX()-lastX);
 			}
 			lastX=e.getX();
 			lastY=e.getY();

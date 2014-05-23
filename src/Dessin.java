@@ -1,9 +1,6 @@
-import java.util.ArrayList;
-
 import javax.swing.JPanel;
 
 public class Dessin extends JPanel {
-	public static ArrayList dessin;
 	public static FormesGeo modele;
 	public static VueTexte texte;
 	public static VueGraph graph;
@@ -21,6 +18,5 @@ public class Dessin extends JPanel {
 	public static void addModele(Cercle c){
 		c.addObserver(texte);
 		c.addObserver(graph);
-		dessin.add(c);
 	}
 }

@@ -16,16 +16,21 @@ public class VueGraph extends ControleurGraph implements Observer{
 		setBackground(new Color(255, 255, 255));
 	}
 	public void update(Observable o,Object arg1){
-		modele=(Cercle)o;
+		modele=(FormesGeo)o;
 		System.out.println("update");
 		repaint();
 	}
 	public void paint(Graphics g){
 		super.paint(g);
-		if(modele instanceof Cercle){
-			g.setColor(modele.getCouleurContour());
-			g.drawOval(((Cercle)modele).getX()-((Cercle)modele).getTaille()/2,((Cercle)modele).getY()-((Cercle)modele).getTaille()/2,((Cercle)modele).getTaille(),((Cercle)modele).getTaille());
-			if(modele.isSelected()){
+		System.out.println("paint");
+		for(int i=0;i<dessin.size();i++){
+			if(dessin.get(i) instanceof Cercle){
+				g.setColor(((FormesGeo)(dessin.get(i))).getCouleurContour());
+				g.drawOval(((Cercle)dessin.get(i)).getX()-((Cercle)dessin.get(i)).getTaille()/2,((Cercle)dessin.get(i)).getY()-((Cercle)dessin.get(i)).getTaille()/2,((Cercle)dessin.get(i)).getTaille(),((Cercle)dessin.get(i)).getTaille());
+			}
+		}
+		if(modele.isSelected()){
+			if(modele instanceof Cercle){
 				g.drawRect(((Cercle)modele).getX()-2, ((Cercle)modele).getY()-2, 4,4);//dessine le centre
 				g.drawRect(((Cercle)modele).getX()+((Cercle)modele).getTaille()/2-2, ((Cercle)modele).getY()-2, 4,4);//dessine le point du rayon
 			}

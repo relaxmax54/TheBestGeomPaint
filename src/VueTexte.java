@@ -4,6 +4,7 @@ import java.util.Observer;
 
 public class VueTexte implements Observer{
 	public void update(Observable o,Object arg){
-		System.out.println("vue texte : "+((Cercle)o).getTaille());
+		if(o instanceof Cercle)
+			System.out.println("vue texte : "+((Cercle)o).getTaille());
 	}
 }

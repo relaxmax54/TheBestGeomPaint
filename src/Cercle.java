@@ -20,7 +20,6 @@ public class Cercle extends FormesGeo{
 	}
 	public void setCentre(int x, int y){
 		this.centre.move(x,y);
-		System.out.println("CerclesetCentre");
 		setChanged();
 		notifyObservers();
 	}
