@@ -7,8 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 
-public class ControleurGraph extends JPanel implements MouseListener, MouseMotionListener{
-	FormesGeo modele;
+public class ControleurGraph extends Dessin implements MouseListener, MouseMotionListener{
 	int lastX,lastY;
 	boolean redimension;
 	
@@ -36,8 +35,9 @@ public class ControleurGraph extends JPanel implements MouseListener, MouseMotio
 	public void mouseClicked(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
 	public void mousePressed(MouseEvent e) {
+		System.out.println("event" );
 		if (SwingUtilities.isLeftMouseButton(e)){
-			if(modele!=null){
+			if(modele.choix==3){
 				if(((Cercle)modele).testCurseurRayon(e.getX(),e.getY()))
 					redimension=true;
 				else

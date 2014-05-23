@@ -4,6 +4,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -11,13 +13,12 @@ import javax.swing.JColorChooser;
 import javax.swing.JPanel;
 
 
-public class VueMenu extends JPanel implements ActionListener{
+public class VueMenu extends Dessin implements ActionListener{
 	private static final int tailleMenu = 10;
 	private Bouton[] bouton = new Bouton[tailleMenu];
-	FormesGeo modele;
 	
 	public VueMenu(FormesGeo d){
-		modele=d;
+
 		setPreferredSize(new Dimension(710,35));
 		setLayout(new GridLayout(1, 10, 39, 5));
 		
@@ -50,14 +51,20 @@ public class VueMenu extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source == bouton[2]) {
+        	FormesGeo modele=new Rectangle();
             System.out.println("Rectangle" );
         } else if (source == bouton[3]) {
+        	Cercle modele=new Cercle();//////////////
+        	((Cercle)modele).setCentre(0,0);
+        	modele.choix=3;
             System.out.println("Cercle" );
         } else if (source == bouton[4]) {
+        	Triangle modele=new Triangle();
             System.out.println("Triangle" );
         } else if (source == bouton[5]) {
+        	Polygone modele=new Polygone();
             System.out.println("Polygone" );
         }
+    	Dessin.setModele(modele);
 	}
-
 }

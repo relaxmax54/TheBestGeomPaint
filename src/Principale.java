@@ -6,17 +6,14 @@ import javax.swing.JFrame;
 
 public class Principale {
 	public static void main(String[] args){
-		
-		//création des modèles
-		Cercle d=new Cercle();
-		
+		Dessin d=new Dessin();
 		//création des vues
 		VueTexte vt=new VueTexte();
 		VueGraph vg=new VueGraph();
 		
-		d.addObserver(vt);
-		d.addObserver(vg);
-		
+		Dessin.texte=vt;
+		Dessin.graph=vg;
+			
 		//création des contrôleurs
 		VueMenu vm=new VueMenu(null);		
 		Controleur c=new Controleur(null);

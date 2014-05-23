@@ -4,6 +4,7 @@ import java.util.Observable;
 
 public class FormesGeo extends Observable{//MODELE
 	protected final static int carre=4;//largeur des petits carrés de sélection
+	public static int choix=0;
 	private boolean selected;
 	private Color couleurRemplissage; //Couleur des bordures
 	private Color couleurContour; //Couleur de remplissage
