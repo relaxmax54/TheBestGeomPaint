@@ -16,15 +16,15 @@ public class VueGraph extends ControleurGraph implements Observer{
 		setBackground(new Color(255, 255, 255));
 	}
 	public void update(Observable o,Object arg1){
-		modele=(Disque)o;
+		modele=(Cercle)o;
 		repaint();
 	}
 	public void paint(Graphics g){
 		super.paint(g);
 		if(modele!=null)
-			g.setColor(modele.getCouleur());
-			g.drawRect(modele.getX()-2, modele.getY()-2, 4,4);//dessine le centre
-			g.drawRect(modele.getX()+modele.getTaille()/2-2, modele.getY()-2, 4,4);//dessine le point du rayon
-			g.drawOval(modele.getX()-modele.getTaille()/2,modele.getY()-modele.getTaille()/2,modele.getTaille(),modele.getTaille());
+			g.setColor(modele.getCouleurContour());
+			g.drawRect(((Cercle)modele).getX()-2, ((Cercle)modele).getY()-2, 4,4);//dessine le centre
+			g.drawRect(((Cercle)modele).getX()+((Cercle)modele).getTaille()/2-2, ((Cercle)modele).getY()-2, 4,4);//dessine le point du rayon
+			g.drawOval(((Cercle)modele).getX()-((Cercle)modele).getTaille()/2,((Cercle)modele).getY()-((Cercle)modele).getTaille()/2,((Cercle)modele).getTaille(),((Cercle)modele).getTaille());
 	}
 }

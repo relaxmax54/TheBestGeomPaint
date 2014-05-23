@@ -14,9 +14,9 @@ import javax.swing.JPanel;
 public class VueMenu extends JPanel implements ActionListener{
 	private static final int tailleMenu = 10;
 	private Bouton[] bouton = new Bouton[tailleMenu];
-	Disque modele;
+	FormesGeo modele;
 	
-	public VueMenu(Disque d){
+	public VueMenu(FormesGeo d){
 		modele=d;
 		setPreferredSize(new Dimension(710,35));
 		setLayout(new GridLayout(1, 10, 39, 5));
@@ -36,7 +36,7 @@ public class VueMenu extends JPanel implements ActionListener{
                 Color background = JColorChooser.showDialog(null,"Changer de Couleur", null);
                 if (background != null) {
                 	bouton[9].setBackground(background);
-                	modele.setCouleur(background);
+                	modele.setCouleurContour(background);
                 }
             }
         };

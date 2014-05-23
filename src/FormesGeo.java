@@ -1,11 +1,12 @@
 
+import java.awt.Color;
 import java.util.Observable;
 
 public class FormesGeo extends Observable{//MODELE
-
+	protected final static int carre=4;//largeur des petits carrés de sélection
 	private boolean selected;
-	private int couleurRemplissage; //Couleur des bordures
-	private int couleurContour; //Couleur de remplissage
+	private Color couleurRemplissage; //Couleur des bordures
+	private Color couleurContour; //Couleur de remplissage
 	
 	public FormesGeo(){
 		selected = true;
@@ -15,37 +16,31 @@ public class FormesGeo extends Observable{//MODELE
 		setChanged();//une forme géométrique sélectionnée doit être différentiable des autres formes
 		notifyObservers();
 	}
-	
 	public void unSelected(){
 		selected = false;
 		setChanged();//les formes non sélectionnées doivent être différentiable des autres formes
 		notifyObservers();
 	}
-	
 	public boolean isSelected()	{
 		return selected;
 	}
-	
-	public void setCouleurRemplissage(int rgba){
-		couleurRemplissage = rgba;
-		setChanged();
-		notifyObservers();
-	}
-	
-	public void setCouleurContour(int rgba)
+	public Color getCouleurContour()
 	{
-		couleurContour = rgba;
+		return couleurContour;
+	}
+	public void setCouleurContour(Color c)
+	{
+		this.couleurContour = c;
 		setChanged();
 		notifyObservers();
 	}
-	
-	public int getCouleurRemplissage()
+	public Color getCouleurRemplissage()
 	{
 		return couleurRemplissage;
 	}
-	
-	public int getCouleurContour()
-	{
-		return couleurContour;
+	public void setCouleurRemplissage(Color c){
+		couleurRemplissage = c;
+		setChanged();
+		notifyObservers();
 	}
 }

@@ -1,15 +1,10 @@
-import java.awt.Color;
 import java.awt.Point;
-import java.util.Observable;
 
-public class Disque extends Observable {
-	//attributs à faire hériter
-	private int carre=4;//largeur des petits carrés de sélection
+public class Cercle extends FormesGeo {
 	private int taille;
-	private Color couleur;
 	private Point centre;
 	
-	public Disque(){
+	public Cercle(){
 		taille=10;
 		centre=new Point();
 	}
@@ -22,9 +17,6 @@ public class Disque extends Observable {
 	public int getTaille(){
 		return taille;
 	}
-	public Color getCouleur(){
-		return this.couleur;
-	}
 	public void setCentre(int x, int y){
 		this.centre.move(x,y);
 		setChanged();
@@ -33,11 +25,6 @@ public class Disque extends Observable {
 	public void setTaille(int t){
 		if(t>0)
 		taille=t;
-		setChanged();
-		notifyObservers();
-	}
-	public void setCouleur(Color c){
-		this.couleur=c;
 		setChanged();
 		notifyObservers();
 	}

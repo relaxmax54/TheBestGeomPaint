@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 
 
 public class ControleurGraph extends JPanel implements MouseListener, MouseMotionListener{
-	Disque modele;
+	FormesGeo modele;
 	int lastX,lastY;
 	boolean redimension;
 	
@@ -37,10 +37,10 @@ public class ControleurGraph extends JPanel implements MouseListener, MouseMotio
 	public void mouseExited(MouseEvent e) {}
 	public void mousePressed(MouseEvent e) {
 		if (SwingUtilities.isLeftMouseButton(e)){
-			if(modele.testCurseurRayon(e.getX(),e.getY()))
+			if(((Cercle)modele).testCurseurRayon(e.getX(),e.getY()))
 				redimension=true;
 			else
-				modele.setCentre(e.getX(),e.getY());
+				((Cercle)modele).setCentre(e.getX(),e.getY());
 		}
 		else if (SwingUtilities.isMiddleMouseButton(e)) {
 	    	repaint();
@@ -107,7 +107,7 @@ public class ControleurGraph extends JPanel implements MouseListener, MouseMotio
 			Graphics g=getGraphics();
 			System.out.println(lastX+" "+lastY);
 			if(redimension){
-				modele.setTaille(modele.getTaille()+e.getX()-lastX);
+				((Cercle)modele).setTaille(((Cercle)modele).getTaille()+e.getX()-lastX);
 			}
 			lastX=e.getX();
 			lastY=e.getY();

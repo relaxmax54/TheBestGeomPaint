@@ -8,7 +8,7 @@ public class Principale {
 	public static void main(String[] args){
 		
 		//création des modèles
-		Disque d=new Disque();
+		Cercle d=new Cercle();
 		
 		//création des vues
 		VueTexte vt=new VueTexte();
