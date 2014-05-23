@@ -9,12 +9,14 @@ public class Controleur extends JSlider {
 	public Controleur(FormesGeo d){
 		super();
 		modele=d;
+		setValue(0);
 		
 		setMaximum(100);
 		setMinimum(1);
 		
 		addChangeListener(new ChangeListener(){
 			public void stateChanged(ChangeEvent arg0){
+				if(modele!=null)
 				((Cercle)modele).setTaille(getValue());
 			}
 		});

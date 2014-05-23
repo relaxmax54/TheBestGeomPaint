@@ -37,14 +37,16 @@ public class ControleurGraph extends JPanel implements MouseListener, MouseMotio
 	public void mouseExited(MouseEvent e) {}
 	public void mousePressed(MouseEvent e) {
 		if (SwingUtilities.isLeftMouseButton(e)){
-			if(((Cercle)modele).testCurseurRayon(e.getX(),e.getY()))
-				redimension=true;
-			else
-				((Cercle)modele).setCentre(e.getX(),e.getY());
-		}
-		else if (SwingUtilities.isMiddleMouseButton(e)) {
-	    	repaint();
-		}
+			if(modele!=null){
+				if(((Cercle)modele).testCurseurRayon(e.getX(),e.getY()))
+					redimension=true;
+				else
+					((Cercle)modele).setCentre(e.getX(),e.getY());
+					}
+				else if (SwingUtilities.isMiddleMouseButton(e)) {
+					repaint();
+				}
+			}
 		lastX=e.getX();
 		lastY=e.getY();
 	}

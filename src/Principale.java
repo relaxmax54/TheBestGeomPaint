@@ -18,8 +18,8 @@ public class Principale {
 		d.addObserver(vg);
 		
 		//création des contrôleurs
-		VueMenu vm=new VueMenu(d);		
-		Controleur c=new Controleur(d);
+		VueMenu vm=new VueMenu(null);		
+		Controleur c=new Controleur(null);
 		
 		JFrame frame=new JFrame();
 		frame.setLayout(new BorderLayout());
@@ -33,6 +33,5 @@ public class Principale {
 		frame.pack();
 		frame.setSize(new Dimension(700,490));
 		frame.setVisible(true);
-		c.setValue(40);
 	}
 }
