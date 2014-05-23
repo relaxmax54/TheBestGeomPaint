@@ -33,6 +33,6 @@ public class Principale {
 		frame.pack();
 		frame.setSize(new Dimension(700,490));
 		frame.setVisible(true);
-		c.setValue(10);
+		c.setValue(40);
 	}
 }
