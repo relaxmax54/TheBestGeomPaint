@@ -8,9 +8,12 @@ import javax.swing.SwingUtilities;
 
 
 public class ControleurGraph extends JPanel implements MouseListener, MouseMotionListener{
+	Disque modele;
 	int lastX,lastY;
+	boolean redimension;
 	
 	public ControleurGraph(){
+		redimension=false;
 		addMouseListener(this);
     	addMouseMotionListener(this);
 	}
@@ -33,13 +36,17 @@ public class ControleurGraph extends JPanel implements MouseListener, MouseMotio
 	public void mouseClicked(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
 	public void mousePressed(MouseEvent e) {
-		if (SwingUtilities.isLeftMouseButton(e)) {		
-			this.lastX=e.getX();
-			this.lastY=e.getY();
+		if (SwingUtilities.isLeftMouseButton(e)){
+			if(modele.testCurseurRayon(e.getX(),e.getY()))
+				redimension=true;
+			else
+				modele.setCentre(e.getX(),e.getY());
 		}
 		else if (SwingUtilities.isMiddleMouseButton(e)) {
 	    	repaint();
 		}
+		lastX=e.getX();
+		lastY=e.getY();
 	}
 	public void mouseReleased(MouseEvent e) {
 		/*if (SwingUtilities.isLeftMouseButton(e)) {
@@ -98,9 +105,12 @@ public class ControleurGraph extends JPanel implements MouseListener, MouseMotio
 	}
 	public void mouseDragged(MouseEvent e) {
 			Graphics g=getGraphics();
+			System.out.println(lastX+" "+lastY);
+			if(redimension){
+				modele.setTaille(modele.getTaille()+e.getX()-lastX);
+			}
 			lastX=e.getX();
 			lastY=e.getY();
-			System.out.println(lastX+" "+lastY);
 	}
 	public void mouseMoved(MouseEvent e){
 		
